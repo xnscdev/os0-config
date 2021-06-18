@@ -1,0 +1,20 @@
+This repository contains patches and build configuration files for building
+the OS/0 operating system and cross-compiling software.
+
+Directory layout:
+
+patches - Contains gzip'd patch files for various software, each file is
+	  named in the format <package>-<version>.patch.gz and can be
+	  used by entering the source directory for the package and running:
+
+	  gzip -cd <PATCHFILE> | patch -Np1
+
+targets - Contains meson build configuration files for various targets. Use
+	  these files to cross-compile the operating system kernel or system
+	  libraries when building like this:
+
+	  meson --cross-file=<TARGETFILE>
+
+	  Each target file is named according to the target triplet of the
+	  GCC toolchain it will use, for example, i686-pc-os0.conf will try
+	  to use a compiler named `i686-pc-os0-gcc'.
